@@ -1,0 +1,251 @@
+@import './_size';
+@import './_color';
+@import './_flex';
+@import './vant-ui';
+
+* {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+}
+body,
+html {
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: $font-family-regular;
+  padding: 0;
+  margin: 0;
+  background: $bg-color;
+  color: $main-color;
+  -webkit-overflow-scrolling: touch;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+}
+
+#app {
+  max-width: 540px;
+  min-height: 100%;
+  margin: 0 auto;
+}
+
+.font-medium {
+  @extend %font-medium;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.pre-line {
+  white-space: pre-line;
+}
+
+.safe-area-inset-bottom {
+  @extend %safe-area-inset-bottom;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.cu-tag {
+  vertical-align: middle;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 10px;
+  padding: 0px 6px;
+  height: 16px;
+  white-space: nowrap;
+}
+
+.cu-avatar {
+  font-variant: small-caps;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: $bg-color;
+  color: $white-color;
+  white-space: nowrap;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  background-size: cover;
+  background-position: center;
+  vertical-align: middle;
+  font-size: 1.5em;
+}
+
+.cu-avatar.sm {
+  width: 24px;
+  height: 24px;
+  font-size: 1em;
+}
+
+.cu-avatar.lg {
+  width: 48px;
+  height: 48px;
+  font-size: 2em;
+}
+
+.cu-avatar.xl {
+  width: 64px;
+  height: 64px;
+  font-size: 2.5em;
+}
+
+.relative {
+  position: relative;
+}
+
+.dialog-bg {
+  top: 50%;
+  background: url(~@/assets/dialog-bg.png) no-repeat;
+  background-size: cover;
+  max-height: 95%;
+  overflow-y: auto;
+
+  &.calc-dialog-bg {
+    background: url(~@/assets/calc-dialog-bg.png) no-repeat;
+    background-size: cover;
+  }
+  .van-dialog__header {
+    @extend .font-medium;
+  }
+  .van-goods-action {
+    box-sizing: border-box;
+  }
+}
+
+.dialog-form {
+  .van-cell {
+    background: none;
+    padding: 2px 0;
+    flex-wrap: wrap;
+    align-items: center;
+    &::after {
+      display: none;
+    }
+  }
+  .van-field__label {
+    font-size: 12px;
+    color: $main-color;
+    margin-right: 0;
+    line-height: 1.2;
+  }
+  input.van-field__control,
+  textarea.van-field__control {
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 5px;
+    line-height: 1.2;
+    border: 1px solid #979797;
+  }
+
+  .van-field__control--custom {
+    line-height: 1;
+  }
+}
+
+.dialog-close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.copy-tag {
+  background: #ffe8e8;
+}
+
+.text-thin {
+  font-weight: 400;
+}
+.underline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.overflow-x {
+  overflow-x: auto;
+}
+
+.overflow-y {
+  overflow-y: auto;
+}
+
+.account-tag {
+  font-size: 11px;
+  padding: 6px 14px;
+  background: #f4f4f4;
+  color: $secondary-color;
+
+  &.bg-primary {
+    color: $primary-color;
+    background: #feddd9;
+  }
+
+  &.bg-warning {
+    color: $warning-color;
+    background: #fcf1d8;
+  }
+}
+
+.dropdown-menu-container {
+  .van-dropdown-menu__bar {
+    box-shadow: none;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .van-dropdown-menu__item {
+    flex: auto;
+
+    .van-dropdown-menu__title {
+      padding: 5px 24px 5px 10px;
+      font-size: 11px;
+      background: #f4f4f4;
+      border-radius: 10px;
+
+      &::after {
+        right: 12px;
+        margin-top: -7px;
+        border-width: 4px;
+      }
+      &.van-dropdown-menu__title--active::after {
+        margin-top: -1px;
+      }
+      &:not(.van-dropdown-menu__title--active):after {
+        border-color: transparent transparent $secondary-color $secondary-color;
+      }
+    }
+  }
+}
+
+.price-container input {
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  height: 33px;
+  padding: 5px;
+}

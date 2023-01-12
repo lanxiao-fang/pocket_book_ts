@@ -1,0 +1,46 @@
+$size-map: -2 -8 0 4 5 6 8 10 12 13 14 15 17 20 26 45 50 55;
+$width-map: 30 36 61 100 150 200;
+$radius-map: 3 4 5 6 10 15 20;
+$percent-map: 50 100;
+$font-sizes: 10 11 12 13 14 15 16 17 18 20 22 24 26;
+
+$primary-color: #f05a48;
+$warning-color: #d38615;
+
+$danger-color: #f56c6c;
+$success-color: #67c23a;
+$info-color: #909399;
+$black-color: #000;
+$white-color: #fff;
+$main-color: #333;
+$regular-color: #666;
+$secondary-color: #999;
+$border-color: #d6d6d6;
+$bg-color: #f8f8f8;
+$blue-color: #0081ff;                      
+$blue-light-color: #eaf2fc;
+$green-light-color: #e7f6eb;
+$purple-color: #8a48f0;
+$azure-blue-color: #5899b5;
+
+$mauve-color: #9c26b0;
+$yellow-color: #e4e60a;
+
+// 优雅的选择字体
+// pc端
+$font-family-regular: -apple-system, BlinkMacSystemFont, 'PingFang-SC-regular', helvetica, tahoma,
+  arial, 'Microsoft YaHei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+$font-family-medium: -apple-system, BlinkMacSystemFont, 'PingFang-SC-medium', helvetica, tahoma,
+  arial, 'Microsoft YaHei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+
+%font-medium {
+  font-weight: 600;
+  font-family: $font-family-medium;
+}
+
+// 部安全区适配
+%safe-area-inset-bottom {
+  box-sizing: content-box;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
