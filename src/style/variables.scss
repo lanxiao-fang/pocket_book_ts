@@ -4,14 +4,17 @@ $radius-map: 3 4 5 6 10 15 20;
 $percent-map: 50 100;
 $font-sizes: 10 11 12 13 14 15 16 17 18 20 22 24 26;
 
-$primary-color: #f05a48;
-$warning-color: #d38615;
 
-$danger-color: #f56c6c;
-$success-color: #67c23a;
-$info-color: #909399;
-$black-color: #000;
-$white-color: #fff;
+// 使用css白能量转成scss变量，实现主题换色
+$theme_color: var(--theme-color);
+$primary-color: var(--theme-color);
+$warning-color: var(--warning-color);
+
+$danger-color: var(--danger-color);
+$success-color: var(--success-color);
+$info-color: var(--info-color);
+$black-color: var(--black-color);
+$white-color: var(--white-color);
 $main-color: #333;
 $regular-color: #666;
 $secondary-color: #999;
@@ -25,6 +28,12 @@ $azure-blue-color: #5899b5;
 
 $mauve-color: #9c26b0;
 $yellow-color: #e4e60a;
+
+
+
+
+
+
 
 // 优雅的选择字体
 // pc端

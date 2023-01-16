@@ -10,7 +10,6 @@ declare module '@vue/runtime-core' {
     HelloWorld: typeof import('./../src/components/HelloWorld.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    VanButton: typeof import('vant/es')['Button']
     VanTabbar: typeof import('vant/es')['Tabbar']
     VanTabbarItem: typeof import('vant/es')['TabbarItem']
   }

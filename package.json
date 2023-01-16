@@ -11,8 +11,11 @@
   "dependencies": {
     "@vueuse/core": "^9.10.0",
     "autoprefixer": "^10.4.13",
+    "css-vars-ponyfill": "^2.4.8",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
+    "pinia": "^2.0.28",
+    "pinia-plugin-persistedstate": "^3.0.2",
     "vant": "^4.0.7",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
