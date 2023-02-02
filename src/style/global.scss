@@ -249,3 +249,15 @@ input:-webkit-autofill {
   height: 33px;
   padding: 5px;
 }
+
+// 实现页面进度条的颜色
+#nprogress .bar {
+  background: $theme_color !important; //自定义颜色
+}
+#nprogress .peg {
+  box-shadow: 0 0 0.26667rem $theme_color, 0 0 0.13333rem $theme_color !important;
+}
+#nprogress .spinner-icon {
+  border-top-color: $theme_color !important;
+  border-left-color: $theme_color !important;
+}

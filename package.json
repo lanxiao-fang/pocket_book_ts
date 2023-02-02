@@ -11,6 +11,7 @@
   "dependencies": {
     "@vueuse/core": "^9.10.0",
     "autoprefixer": "^10.4.13",
+    "axios": "^1.2.6",
     "css-vars-ponyfill": "^2.4.8",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",

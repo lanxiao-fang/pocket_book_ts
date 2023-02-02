@@ -5,7 +5,12 @@ import 'nprogress/nprogress.css';
 
 import { flatten } from 'lodash'
 
+import { isLogin } from "@/utils/auth";
+import { useUserStore } from '@/store'
+
 const rts = import.meta.glob('./modules/*.ts')
+
+
 
 console.log(rts);
 
@@ -14,7 +19,7 @@ let pageRoutes: RouteRecordRaw[] = []
 
 for (const path in rts) {
   const mod: any = await rts[path]()
-  pageRoutes.push(...flatten( mod.default as RouteRecordRaw[]))
+  pageRoutes.push(...flatten(mod.default as RouteRecordRaw[]))
 }
 
 
@@ -36,6 +41,8 @@ const routes = [
   }
 ]
 
+const whiteList = ['/login', '/404', '/401']
+
 
 const router = createRouter({
   // history: createWebHashHistory(), // hash路由，路径上没有#的，但是需要后端搭配nginx，否则刷新后匹配不上资源，页面404
@@ -45,9 +52,46 @@ const router = createRouter({
 
 
 router.beforeEach(async (_to, _from, next) => {
+  const userStore = useUserStore();
+  const { user_id } = userStore
+
+  const _isLogin = isLogin()
+
+  console.log('userStore', userStore.user_id, _isLogin);
+  // 如果是登陆过的
+  if (_isLogin) {
+    if (_to.path === 'login') {
+      next({
+        path: '/'
+      })
+    } else {
+      if (user_id) {
+        next()
+      } else {
+        try {
+
+
+        } catch (error) {
+          next('/login')
+        }
+      }
+
+
+    }
+  } else {
+
+
+    if (whiteList.indexOf(_to.path) !== -1) {
+      console.log('9999999');
+      next()
+    } else {
+      next(`/login`)
+    }
+
+  }
 
   NProgress.start();
-  next();
+  // next()
 });
 
 router.afterEach((_to) => {

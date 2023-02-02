@@ -47,5 +47,6 @@ const router: RouterObj[] = [
         },
         component: () => import('@/view/my/index.vue')
     },
+   
 ]
 export default router

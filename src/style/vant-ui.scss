@@ -87,3 +87,7 @@
         color: $theme_color;
     }
 }
+.van-button--primary {
+    background: $theme_color !important;
+    border-color: $theme_color !important;
+}
