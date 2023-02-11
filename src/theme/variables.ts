@@ -22,6 +22,7 @@ const baseColor = {
 }
 export let variablesOpt: VariablesOpt = {
     light: {
+        name: '绿色',
         ...baseSize,
         ...baseColor,
         '--bg-color1': '#f5f5f5',
@@ -37,6 +38,7 @@ export let variablesOpt: VariablesOpt = {
         '--border-color': '#f5f5f5'
     },
     pink: {
+        name: '粉色',
         ...baseSize,
         ...baseColor,
         '--bg-color1': '#f5f5f5',
@@ -52,6 +54,7 @@ export let variablesOpt: VariablesOpt = {
         '--border-color': '#f5f5f5'
     },
     blue: {
+        name: '蓝色',
         ...baseSize,
         ...baseColor,
         '--bg-color1': '#f5f5f5',
@@ -66,6 +69,4 @@ export let variablesOpt: VariablesOpt = {
         '--text-color6': '#ffffff',
         '--border-color': '#f5f5f5'
     },
-
-    dark: {}
 }

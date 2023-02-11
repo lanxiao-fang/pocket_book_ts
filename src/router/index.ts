@@ -8,6 +8,7 @@ import { flatten } from 'lodash'
 import { isLogin } from "@/utils/auth";
 import { useUserStore } from '@/store'
 
+
 const rts = import.meta.glob('./modules/*.ts')
 
 
@@ -53,11 +54,11 @@ const router = createRouter({
 
 router.beforeEach(async (_to, _from, next) => {
   const userStore = useUserStore();
-  const { user_id } = userStore
+  const { id } = userStore
 
   const _isLogin = isLogin()
 
-  console.log('userStore', userStore.user_id, _isLogin);
+  console.log('userStore', _isLogin);
   // 如果是登陆过的
   if (_isLogin) {
     if (_to.path === 'login') {
@@ -65,24 +66,21 @@ router.beforeEach(async (_to, _from, next) => {
         path: '/'
       })
     } else {
-      if (user_id) {
+      if (id) {
+        // 用户信息存在
         next()
       } else {
         try {
-
-
+          // 不存在重新获取
+          await userStore.info()
+          next()
         } catch (error) {
           next('/login')
         }
       }
-
-
     }
   } else {
-
-
     if (whiteList.indexOf(_to.path) !== -1) {
-      console.log('9999999');
       next()
     } else {
       next(`/login`)

@@ -6,8 +6,8 @@
         <van-form @submit="onSubmit">
             <van-cell-group inset>
                 <van-field v-model="username" name="username" label="账号" placeholder="请输入账号" :rules="usernameRules" />
-                <van-field v-model="password" type="password" name="password" label="密码" placeholder="请输入密码"
-                    :rules="passwordRules" />
+                <!-- :rules="passwordRules" -->
+                <van-field v-model="password" type="password" name="password" label="密码" placeholder="请输入密码" />
             </van-cell-group>
             <div style="margin: 16px;">
                 <van-button round block type="primary" native-type="submit">
@@ -22,6 +22,7 @@
 <script setup lang="ts">
 import { useUserStore } from '@/store'
 import { LoginData } from '@/api/user/index';
+import router from '@/router/index'
 const userStore = useUserStore();
 
 let username = ref('')
@@ -38,7 +39,7 @@ const usernameRules = reactive([
     }
 ])
 const passwordRules = reactive([
-    { required: true, message: "密码不能为空", trigger: "onChange" },
+    { required: false, message: "密码不能为空", trigger: "onChange" },
     {
         validator: (value: any) => {
             return /^(?=.*[a-z])(?=.*\d)[^]{8,16}$/.test(value);
@@ -47,9 +48,17 @@ const passwordRules = reactive([
         trigger: "onBlur",
     }
 ])
-const onSubmit = (values: LoginData) => {
-    console.log('submit', values);
-    userStore.login(values)
+const onSubmit = async (values: LoginData) => {
+    try {
+        const result = await userStore.login(values)
+        console.log(66666666, result);
+        router.replace('/details')
+
+    } catch (error) {
+
+    }
+
+
 };
 
 </script>

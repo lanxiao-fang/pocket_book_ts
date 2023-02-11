@@ -5,7 +5,7 @@ import { UserState } from '@/store/modules/user/types';
 enum URL {
     login = '/api/user/login',
     logout = '/api/user/logout',
-    profile = '/api/user/profile',
+    profile = '/api/user/get_userinfo',
 }
 interface LoginRes {
     token: string;

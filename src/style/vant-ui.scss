@@ -91,3 +91,14 @@
     background: $theme_color !important;
     border-color: $theme_color !important;
 }
+
+
+// 加载样式
+.loading-gif {
+    background: none;
+    .van-icon__image {
+        width: 80px;
+        height: 80px;
+    }
+
+}

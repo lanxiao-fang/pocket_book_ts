@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia';
 import { UserState } from './types';
-import { login as userLogin, logout as userLogout, LoginData } from '@/api/user/index';
+import { login as userLogin, logout as userLogout, LoginData, getUserProfile } from '@/api/user/index';
 import { setToken, clearToken } from '@/utils/auth';
 
 export const useUserStore = defineStore('user', {
     state: (): UserState => ({
-        user_id: '',
-        desc: "",
-        user_name: ""
+        id: '',
+        signature: "",
+        username: ""
     }),
     getters: {
         userProfile(state: UserState): UserState {
@@ -31,19 +31,18 @@ export const useUserStore = defineStore('user', {
         },
         // 获取用户信息
         async info() {
-            //   const result = await getUserProfile();
-            //   this.setInfo(result);
+            const result = await getUserProfile();
+            console.log('信息', result);
+            this.setInfo(result);
         },
         // 异步登录并存储token
         async login(loginForm: LoginData) {
-            console.log('登录', loginForm);
-
-            const result = await userLogin(loginForm);
-            const token = result?.token;
+            const data = await userLogin(loginForm);
+            const token = data?.token;
             if (token) {
                 setToken(token);
             }
-            return result;
+            return data;
         },
         // Logout
         async logout() {
@@ -53,5 +52,8 @@ export const useUserStore = defineStore('user', {
             // 路由表重置
             // location.reload();
         },
+
+        // 修改个性签名
+
     },
 });
