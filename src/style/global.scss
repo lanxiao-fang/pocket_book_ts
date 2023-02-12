@@ -244,6 +244,9 @@ input:-webkit-autofill {
   }
 }
 
+.van-dialog__confirm, .van-dialog__confirm:active {
+  color: $theme_color !important;
+}
 .price-container input {
   border: 1px solid $border-color;
   border-radius: 5px;

@@ -53,6 +53,8 @@ const router = createRouter({
 
 
 router.beforeEach(async (_to, _from, next) => {
+  console.log('routes', routes);
+
   const userStore = useUserStore();
   const { id } = userStore
 

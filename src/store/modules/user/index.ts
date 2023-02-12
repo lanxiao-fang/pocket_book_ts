@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { UserState } from './types';
-import { login as userLogin, logout as userLogout, LoginData, getUserProfile } from '@/api/user/index';
+import { login as userLogin, logout as userLogout, LoginData, getUserProfile, setSignature, setSignatureData, setPass, passData } from '@/api/user/index';
 import { setToken, clearToken } from '@/utils/auth';
 
 export const useUserStore = defineStore('user', {
@@ -54,6 +54,22 @@ export const useUserStore = defineStore('user', {
         },
 
         // 修改个性签名
+        async setSignatureFn(data: setSignatureData) {
+            try {
+                const result = await setSignature(data)
+                console.log('修改个性签名结果', result, data);
+                this.setInfo(result);
+                return result
+            } catch (error) {
+                console.log('66666', error);
+                return false
+            }
+        },
 
+        // 修改密码
+        async setPassFn(data: passData) {
+            const res = await setPass(data)
+            console.log('改密码', data, res);
+        }
     },
 });

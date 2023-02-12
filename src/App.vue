@@ -1,9 +1,7 @@
 <template>
   <div>
 
-    <!-- <keep-alive> -->
-    <router-view />
-    <!-- </keep-alive> -->
+
 
     <template v-if="isTabbarPage">
       <van-tabbar route fixed v-model="active">
@@ -15,6 +13,13 @@
         </van-tabbar-item>
       </van-tabbar>
     </template>
+    <template v-else>
+      <van-nav-bar :title="navBarTitle" left-text="返回" left-arrow @click-left="onClickLeft" />
+    </template>
+
+    <!-- <keep-alive> -->
+    <router-view />
+    <!-- </keep-alive> -->
 
   </div>
 </template>
@@ -29,6 +34,7 @@ const num = ref(3)
 const active = ref(0);
 const _routes = ref(routes)
 const isTabbarPage = ref(true)
+const navBarTitle = ref('')
 const router = useRouter();
 console.log('route changed', router.currentRoute)
 
@@ -38,11 +44,14 @@ const theme = computed(() => {
 });
 
 // 监听当前页面是否是tabbar页面
-watch(() => router.currentRoute.value.path, (newValue, oldValue) => {
-  console.log('watch', newValue, _routes);
-  const flag = _routes.value.find(v => v.path === newValue)
+watch(() => router.currentRoute.value, (newValue, oldValue) => {
+  console.log('watch', newValue, _routes, router.currentRoute);
+  const flag = _routes.value.find(v => v.path === newValue.path)
   isTabbarPage.value = !!flag
+  navBarTitle.value = newValue.meta.title as string
 }, { immediate: true })
+
+const onClickLeft = () => history.back();
 
 
 

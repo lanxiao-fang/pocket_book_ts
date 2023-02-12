@@ -3,7 +3,7 @@ interface RouterObj {
     path: string,
     name: string,
     meta: {
-        [key: string]: string
+        [key: string]: string,
     },
     component: RouteComponent
 }
@@ -47,6 +47,6 @@ const router: RouterObj[] = [
         },
         component: () => import('@/view/my/index.vue')
     },
-   
+
 ]
 export default router

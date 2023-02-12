@@ -8,6 +8,7 @@ import { showToast, closeToast } from 'vant';
 import 'vant/es/toast/style';
 
 import loadingGif from '../../images/loading.gif'
+import { reject } from 'lodash';
 
 
 // 如果请求花费了超过 `timeout` 的时间，请求将被中断
@@ -86,12 +87,15 @@ axiosInstance.interceptors.response.use(
 // T使用泛型，在函数执行时可对反省进行类型确认推断，默认是any
 const request = <T = any>(config: AxiosRequestConfig): Promise<T> => {
   const conf = config;
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     // AxiosResponse是axios提供的一个接口，看相关源码知道AxiosResponse接口里的data属性也是某个接口类型T
     // 所以采用AxiosResponse<IResponse>写法 ， IResponse代替interface AxiosResponse<T = any, D = any> {} 中的T
     axiosInstance.request<any, AxiosResponse<IResponse>>(conf).then((res: AxiosResponse<IResponse>) => {
+      console.log('4444444', res);
       resolve(res.data as T);
-    });
+    }).catch(error => {
+      reject(error)
+    })
   });
 };
 

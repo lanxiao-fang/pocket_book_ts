@@ -10,9 +10,9 @@
         <div class="my-cell-content">
             <van-cell title="修改个性签名" icon="edit" is-link @click="changeSignature">
             </van-cell>
-            <van-cell title="账户安全" icon="setting-o" is-link>
+            <van-cell title="账户安全" icon="setting-o" is-link @click="goToSetPass">
             </van-cell>
-            <van-cell title="软件评分" icon="good-job-o" is-link>
+            <van-cell title="软件评分" icon="good-job-o" is-link @click="setRate">
             </van-cell>
             <van-collapse v-model="activeNames">
                 <van-collapse-item title="切换主题" name="1" icon="shop-o">
@@ -30,27 +30,34 @@
         </div>
 
         <!-- 修改个性签名 -->
-        <!-- 圆角弹窗（居中） -->
         <van-dialog v-model:show="showSignatureDialog" title="个性签名" show-cancel-button @confirm="confirmSignature">
             <van-cell-group inset>
                 <van-field v-model="signature" rows="2" autosize type="textarea" maxlength="20" placeholder="请输入个性签名"
                     show-word-limit />
             </van-cell-group>
         </van-dialog>
-
-
         <!-- 修改个性签名 -->
+
+        <!-- 评分 -->
+        <van-dialog v-model:show="showStartDialog" title="软件评分" show-cancel-button @confirm="confirmStart">
+            <div style="padding-left: 24px;padding-top: 12px;"><van-rate v-model="rateNum" allow-half /></div>
+        </van-dialog>
+        <!-- 评分 -->
 
     </div>
 </template>
 
 <script setup lang="ts">
 import { variablesOpt } from '@/theme/variables'
-import { useAppStore } from '@/store';
+import { useAppStore, useUserStore } from '@/store';
+import router from '@/router/index'
 const appStore = useAppStore();
+const userStore = useUserStore()
 
-let signature = ref('')
+let signature = ref(userStore.signature)
 let showSignatureDialog = ref(false)
+let showStartDialog = ref(false)
+let rateNum = ref(3.5)
 const activeNames = ref(['0']);
 
 
@@ -62,9 +69,25 @@ const changeTheme = (value: string) => {
 const changeSignature = () => {
     showSignatureDialog.value = !showSignatureDialog.value
 }
-const confirmSignature = () => {
-    console.log('确认修改');
+const confirmSignature = async () => {
+    const res = await userStore.setSignatureFn({
+        signature: signature.value as string
+    })
+    if (!res) {
+        // 修改失败，重置
+        signature.value = userStore.signature
+    }
+}
 
+
+const goToSetPass = () => {
+    router.push('/safe')
+}
+const setRate = () => {
+    showStartDialog.value = !showStartDialog.value
+}
+const confirmStart = () => {
+    console.log('评分', rateNum.value);// 这里没接口
 
 }
 </script>
