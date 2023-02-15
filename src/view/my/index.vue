@@ -3,8 +3,8 @@
         <div class="my-header align-center">
             <img class="my-avtar" src="../../images/tx.png" alt="头像">
             <div style="margin-left: 12px;">
-                <p class="my-name">13277779023</p>
-                <p class="my-desc">个性签名：世界和平。</p>
+                <p class="my-name">{{ userStore.username }}</p>
+                <p class="my-desc">个性签名： {{ userStore.signature }}。</p>
             </div>
         </div>
         <div class="my-cell-content">

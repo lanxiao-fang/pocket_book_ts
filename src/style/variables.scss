@@ -15,21 +15,24 @@ $success-color: var(--success-color);
 $info-color: var(--info-color);
 $black-color: var(--black-color);
 $white-color: var(--white-color);
-$main-color: #333;
+$main-color: #000;
 $regular-color: #666;
 $secondary-color: #999;
-$border-color: #d6d6d6;
+$border-color: var(--border-color);
 $bg-color: #f8f8f8;
 $blue-color: #0081ff;                      
 $blue-light-color: #eaf2fc;
 $green-light-color: #e7f6eb;
 $purple-color: #8a48f0;
 $azure-blue-color: #5899b5;
+$bg-btn-color: #f0f0f0;
 
 $mauve-color: #9c26b0;
 $yellow-color: #e4e60a;
 
 $text-color6: var(--text-color6);
+$danger-color: var(--danger-color);
+$warning-color: var(--warning-color);
 
 
 

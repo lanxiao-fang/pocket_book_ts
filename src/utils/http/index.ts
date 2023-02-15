@@ -91,7 +91,6 @@ const request = <T = any>(config: AxiosRequestConfig): Promise<T> => {
     // AxiosResponse是axios提供的一个接口，看相关源码知道AxiosResponse接口里的data属性也是某个接口类型T
     // 所以采用AxiosResponse<IResponse>写法 ， IResponse代替interface AxiosResponse<T = any, D = any> {} 中的T
     axiosInstance.request<any, AxiosResponse<IResponse>>(conf).then((res: AxiosResponse<IResponse>) => {
-      console.log('4444444', res);
       resolve(res.data as T);
     }).catch(error => {
       reject(error)
@@ -101,6 +100,8 @@ const request = <T = any>(config: AxiosRequestConfig): Promise<T> => {
 
 
 export function get<T = any>(config: AxiosRequestConfig): Promise<T> {
+  console.log('get', config);
+
   return request({ ...config, method: 'GET' });
 }
 

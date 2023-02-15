@@ -103,7 +103,9 @@
     }
     
 }
-
+.van-popup {
+    overflow-x: hidden;
+}
 // 加载样式
 .loading-gif {
     background: none;
